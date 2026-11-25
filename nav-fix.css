@@ -1,0 +1,78 @@
+/* Ajustes para navegación fiable y carga sin JavaScript. */
+.nav-menu {
+    position: absolute;
+    inset: var(--header-height) 0 auto;
+    display: block;
+    max-height: calc(100vh - var(--header-height));
+    overflow-y: auto;
+}
+
+/* Con JavaScript, el menú móvil se abre desde el botón. Sin JavaScript,
+   los enlaces quedan visibles para que la navegación siga disponible. */
+.js .nav-menu {
+    display: none;
+}
+
+.js .nav-menu.is-open {
+    display: block;
+}
+
+.nav-toggle {
+    display: none;
+}
+
+.js .nav-toggle {
+    display: grid;
+}
+
+.nav-links a,
+.nav-cta {
+    min-height: 44px;
+}
+
+.navbar {
+    width: 100%;
+}
+
+@media (min-width: 960px) {
+    .nav-menu {
+        position: static;
+        display: flex;
+        max-height: none;
+        overflow: visible;
+    }
+
+    .js .nav-menu {
+        display: flex;
+    }
+
+    .js .nav-toggle {
+        display: none;
+    }
+}
+
+@media (max-width: 959px) {
+    .nav-container {
+        position: relative;
+    }
+
+    .nav-menu {
+        inset-inline: -16px;
+        padding: 18px 16px 24px;
+        box-shadow: 0 12px 24px rgba(0, 0, 0, .24);
+    }
+
+    .js .nav-menu {
+        display: none;
+    }
+
+    .js .nav-menu.is-open {
+        display: block;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
